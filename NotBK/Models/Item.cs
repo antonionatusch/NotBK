@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NotBK.Models;
 
@@ -16,6 +19,8 @@ public partial class Item
     public decimal Precio { get; set; }
 
     public string Size { get; set; } = null!;
+
+    [ValidateNever]
 
     public virtual Categorium CodCategoriaNavigation { get; set; } = null!;
 

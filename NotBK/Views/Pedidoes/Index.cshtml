@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<NotBK.Models.Pedido>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar nuevo cliente</a>
 </p>
 <table class="table">
     <thead>
@@ -16,7 +16,10 @@
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodClienteNavigation)
+                Código del pedido
+            </th>
+            <th>
+                Código de cliente
             </th>
             <th></th>
         </tr>
@@ -24,16 +27,19 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
+                @Html.DisplayFor(modelItem => item.CodPedido)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CodClienteNavigation.CodCliente)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CodPedido">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CodPedido">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CodPedido">Delete</a>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.CodPedido">Modificar</a> |
+                <a asp-action="Details" class="btn btn-info"   asp-route-id="@item.CodPedido">Revisar detalles</a> |
+                <a asp-action="Delete" class="btn btn-warning" asp-route-id="@item.CodPedido">Eliminar registro</a>
             </td>
         </tr>
 }

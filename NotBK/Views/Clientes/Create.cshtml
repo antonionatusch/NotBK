@@ -1,4 +1,4 @@
-﻿@model NotBK.Models.Pedido
+﻿@model NotBK.Models.Cliente
 
 @{
     ViewData["Title"] = "Create";
@@ -6,25 +6,26 @@
 
 <h1>Create</h1>
 
-<h4>Pedido</h4>
+<h4>Cliente</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CodPedido" class="control-label"></label>
-                <input asp-for="CodPedido" class="form-control" />
-                <span asp-validation-for="CodPedido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="CodCliente" class="control-label"></label>
-                <select asp-for="CodCliente" class ="form-control" asp-items="ViewBag.CodCliente"></select>
+                <input asp-for="CodCliente" class="form-control" />
+                <span asp-validation-for="CodCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
+                <label asp-for="Nit" class="control-label"></label>
+                <input asp-for="Nit" class="form-control" />
+                <span asp-validation-for="Nit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

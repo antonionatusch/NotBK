@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 
 namespace NotBK.Models;
@@ -10,6 +11,8 @@ public partial class Pedido
     public string CodCliente { get; set; } = null!;
 
     public DateOnly Fecha { get; set; }
+
+    [ValidateNever]
 
     public virtual Cliente CodClienteNavigation { get; set; } = null!;
 
