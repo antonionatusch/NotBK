@@ -9,11 +9,11 @@ using NotBK.Models;
 
 namespace NotBK.Controllers
 {
-    public class PedidoesController : Controller
+    public class PedidosController : Controller
     {
         private readonly NotBkContext _context;
 
-        public PedidoesController(NotBkContext context)
+        public PedidosController(NotBkContext context)
         {
             _context = context;
         }
