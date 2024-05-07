@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 style="font-size: 22px" >Corregir un </h1>
 
 <h4>Pedido</h4>
 <hr />
@@ -14,24 +14,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CodPedido" />
             <div class="form-group">
-                <label asp-for="CodCliente" class="control-label"></label>
+                <label asp-for="CodCliente" class="control-label">Código del cliente</label>
                 <select asp-for="CodCliente" class="form-control" asp-items="ViewBag.CodCliente"></select>
                 <span asp-validation-for="CodCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
+                <label asp-for="Fecha" class="control-label">Fecha del pedido</label>
                 <input asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar cambios" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista de pedidos</a>
 </div>
 
 @section Scripts {
