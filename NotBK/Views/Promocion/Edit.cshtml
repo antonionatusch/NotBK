@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 style="font-size: 22px" >Modificar</h1>
 
-<h4>Promocion</h4>
+<h4>Promoción</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,24 +14,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CodPromo" />
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
+                <label asp-for="Nombre" class="control-label">Nombre de la promoción</label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descuento" class="control-label"></label>
+                <label asp-for="Descuento" class="control-label">Introducir descuento en formato decimal (ej: 0.50 = 50%)</label>
                 <input asp-for="Descuento" class="form-control" />
                 <span asp-validation-for="Descuento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar cambios" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista de promociones</a>
 </div>
 
 @section Scripts {

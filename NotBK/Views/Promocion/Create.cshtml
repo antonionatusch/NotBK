@@ -4,38 +4,38 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="font-size: 22px" >Agregar nueva</h1>
 
-<h4>Promocion</h4>
+<h4>Promoción</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CodPromo" class="control-label"></label>
+                <label asp-for="CodPromo" class="control-label">Código de la promoción</label>
                 <input asp-for="CodPromo" class="form-control" />
                 <span asp-validation-for="CodPromo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
+                <label asp-for="Nombre" class="control-label">Nombre de la promoción</label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descuento" class="control-label"></label>
+                <label asp-for="Descuento" class="control-label">Descuento (escribir en formato decimal, ej: 0.50 = 50%)</label>
                 <input asp-for="Descuento" class="form-control" />
                 <span asp-validation-for="Descuento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Confirmar registro" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista de promociones</a>
 </div>
 
 @section Scripts {
