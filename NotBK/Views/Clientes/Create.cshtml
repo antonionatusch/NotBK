@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 style="font-size: 22px" >Registrar</h1>
 
 <h4>Cliente</h4>
 <hr />
@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CodCliente" class="control-label"></label>
+                <label asp-for="CodCliente" class="control-label">Código del cliente</label>
                 <input asp-for="CodCliente" class="form-control" />
                 <span asp-validation-for="CodCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nit" class="control-label"></label>
+                <label asp-for="Nit" class="control-label">NIT</label>
                 <input asp-for="Nit" class="form-control" />
                 <span asp-validation-for="Nit" class="text-danger"></span>
             </div>
@@ -28,7 +28,7 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear nuevo registro" class="btn btn-success" />
             </div>
         </form>
     </div>
