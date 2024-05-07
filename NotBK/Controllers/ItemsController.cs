@@ -47,7 +47,7 @@ namespace NotBK.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["CodCategoria"] = new SelectList(_context.Categoria, "CodCategoria", "CodCategoria");
+            ViewData["CodCategoria"] = new SelectList(_context.Categoria, "CodCategoria", "Descripcion");
             return View();
         }
 
@@ -81,7 +81,7 @@ namespace NotBK.Controllers
             {
                 return NotFound();
             }
-            ViewData["CodCategoria"] = new SelectList(_context.Categoria, "CodCategoria", "CodCategoria", item.CodCategoria);
+            ViewData["CodCategoria"] = new SelectList(_context.Categoria, "CodCategoria", "Descripcion", item.CodCategoria);
             return View(item);
         }
 

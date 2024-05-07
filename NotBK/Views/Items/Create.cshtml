@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Agregar nuevo</h1>
 
 <h4>Item</h4>
 <hr />
@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CodItem" class="control-label"></label>
+                <label asp-for="CodItem" class="control-label">Código del nuevo item</label>
                 <input asp-for="CodItem" class="form-control" />
                 <span asp-validation-for="CodItem" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CodCategoria" class="control-label"></label>
+                <label asp-for="CodCategoria" class="control-label">Categoría del item</label>
                 <select asp-for="CodCategoria" class ="form-control" asp-items="ViewBag.CodCategoria"></select>
             </div>
             <div class="form-group">
@@ -27,7 +27,7 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
@@ -37,12 +37,12 @@
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Size" class="control-label"></label>
+                <label asp-for="Size" class="control-label">Tamaño</label>
                 <input asp-for="Size" class="form-control" />
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Confirmar nuevo registro" class="btn btn-success" />
             </div>
         </form>
     </div>
