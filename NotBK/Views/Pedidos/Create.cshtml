@@ -22,8 +22,8 @@
                 <select asp-for="CodCliente" class ="form-control" asp-items="ViewBag.CodCliente"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label">Fecha en formato año/mes/día</label>
-                <input asp-for="Fecha" class="form-control" />
+                <label asp-for="Fecha" class="control-label">Fecha del pedido</label>
+                <input type="date" asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
