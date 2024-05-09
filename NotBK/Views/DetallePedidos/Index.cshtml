@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear Nuevo</a>
 </p>
 <table class="table">
     <thead>
@@ -28,26 +28,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodItemNavigation.CodItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodPedidoNavigation.CodPedido)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodItemNavigation.CodItem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodPedidoNavigation.CodPedido)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.CodItem, id2 = item.CodPedido }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.CodItem, id2 = item.CodPedido }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CodItem, id2 = item.CodPedido })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

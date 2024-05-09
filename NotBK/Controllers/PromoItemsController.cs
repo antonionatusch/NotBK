@@ -45,30 +45,28 @@ namespace NotBK.Controllers
             return View(promoItem);
         }
 
-        // GET: PromoItems/Create
+        // GET: DetallePedidos/Create
         public IActionResult Create()
         {
-            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "Nombre");
-            ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "Nombre");
+            ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre");
+            ViewBag.CodPedido = new SelectList(_context.Pedidos, "CodPedido", "Nombre");
             return View();
         }
 
-        // POST: PromoItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: DetallePedidos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodItem,CodPromo,FechaInicio,FechaFin")] PromoItem promoItem)
+        public async Task<IActionResult> Create([Bind("CodItem,CodPedido,Cantidad")] DetallePedido detallePedido)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(promoItem);
+                _context.Add(detallePedido);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", promoItem.CodItem);
-            ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "CodPromo", promoItem.CodPromo);
-            return View(promoItem);
+            ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre", detallePedido.CodItem);
+            ViewBag.CodPedido = new SelectList(_context.Pedidos, "CodPedido", "Nombre", detallePedido.CodPedido);
+            return View(detallePedido);
         }
 
         // GET: PromoItems/Edit/5

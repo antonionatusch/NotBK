@@ -54,8 +54,6 @@ namespace NotBK.Controllers
         }
 
         // POST: DetallePedidos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CodItem,CodPedido,Cantidad,Direccion")] DetallePedido detallePedido)
@@ -72,31 +70,32 @@ namespace NotBK.Controllers
         }
 
         // GET: DetallePedidos/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var detallePedido = await _context.DetallePedidos.FindAsync(id);
+            var detallePedido = await _context.DetallePedidos.FindAsync(id, id2);
             if (detallePedido == null)
             {
                 return NotFound();
             }
+            ViewBag.Id = id;
+            ViewBag.Id2 = id2;
+
             ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", detallePedido.CodItem);
             ViewData["CodPedido"] = new SelectList(_context.Pedidos, "CodPedido", "CodPedido", detallePedido.CodPedido);
             return View(detallePedido);
         }
 
         // POST: DetallePedidos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodItem,CodPedido,Cantidad,Direccion")] DetallePedido detallePedido)
+        public async Task<IActionResult> Edit(string id, string id2, [Bind("CodItem,CodPedido,Cantidad,Direccion")] DetallePedido detallePedido)
         {
-            if (id != detallePedido.CodItem)
+            if (id != detallePedido.CodItem || id2 != detallePedido.CodPedido)
             {
                 return NotFound();
             }
@@ -110,7 +109,7 @@ namespace NotBK.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DetallePedidoExists(detallePedido.CodItem))
+                    if (!DetallePedidoExists(detallePedido.CodItem, detallePedido.CodPedido))
                     {
                         return NotFound();
                     }
@@ -120,6 +119,10 @@ namespace NotBK.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
+
+                ViewBag.Id = id;
+                ViewBag.Id2 = id2;
+
             }
             ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", detallePedido.CodItem);
             ViewData["CodPedido"] = new SelectList(_context.Pedidos, "CodPedido", "CodPedido", detallePedido.CodPedido);
@@ -127,9 +130,9 @@ namespace NotBK.Controllers
         }
 
         // GET: DetallePedidos/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id, string id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
@@ -137,7 +140,12 @@ namespace NotBK.Controllers
             var detallePedido = await _context.DetallePedidos
                 .Include(d => d.CodItemNavigation)
                 .Include(d => d.CodPedidoNavigation)
-                .FirstOrDefaultAsync(m => m.CodItem == id);
+                .FirstOrDefaultAsync(m => m.CodItem == id && m.CodPedido == id2);
+
+
+            ViewBag.Id = id;
+            ViewBag.Id2 = id2;
+
             if (detallePedido == null)
             {
                 return NotFound();
@@ -149,21 +157,24 @@ namespace NotBK.Controllers
         // POST: DetallePedidos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(string id, string id2)
         {
-            var detallePedido = await _context.DetallePedidos.FindAsync(id);
+            var detallePedido = await _context.DetallePedidos.FindAsync(id, id2);
             if (detallePedido != null)
             {
                 _context.DetallePedidos.Remove(detallePedido);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                return NotFound();
+            }
         }
 
-        private bool DetallePedidoExists(string id)
+        private bool DetallePedidoExists(string id, string id2)
         {
-            return _context.DetallePedidos.Any(e => e.CodItem == id);
+            return _context.DetallePedidos.Any(e => e.CodItem == id && e.CodPedido == id2);
         }
     }
 }

@@ -14,6 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CodItem" />
             <input type="hidden" asp-for="CodPedido" />
+            <input type="hidden" name="id" value="@ViewBag.Id" />
+            <input type="hidden" name="id2" value="@ViewBag.Id2" />
             <div class="form-group">
                 <label asp-for="Cantidad" class="control-label"></label>
                 <input asp-for="Cantidad" class="form-control" />
