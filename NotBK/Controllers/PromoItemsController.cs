@@ -85,14 +85,16 @@ namespace NotBK.Controllers
                 return NotFound();
             }
 
+            ViewBag.Id = id;
+            ViewBag.Id2 = id2;
+
             ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", promoItem.CodItem);
             ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "CodPromo", promoItem.CodPromo);
             return View(promoItem);
         }
 
-        // POST: PromoItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         // POST: PromoItems/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -128,6 +130,7 @@ namespace NotBK.Controllers
             ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "CodPromo", promoItem.CodPromo);
             return View(promoItem);
         }
+
 
         // GET: PromoItems/Delete/5
         public async Task<IActionResult> Delete(string id)

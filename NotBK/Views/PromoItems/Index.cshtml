@@ -19,10 +19,10 @@
                 Último día disponible
             </th>
             <th>
-                Código del item
+                Item
             </th>
             <th>
-                Código de la promoción
+                Promoción
             </th>
             <th></th>
         </tr>
@@ -37,15 +37,16 @@
                 @Html.DisplayFor(modelItem => item.FechaFin)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodItemNavigation.CodItem)
+                @Html.DisplayFor(modelItem => item.CodItemNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodPromoNavigation.CodPromo)
+                @Html.DisplayFor(modelItem => item.CodPromoNavigation.Nombre)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CodItem, id2 = item.CodPromo }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CodItem, id2 = item.CodPromo }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CodItem, id2 = item.CodPromo })
+
+                    @Html.ActionLink("Modificar duración del descuento", "Edit", new {  id = item.CodItem, id2 = item.CodPromo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Revisar detalles", "Details", new { id = item.CodItem, id2 = item.CodPromo }, new { @class = "btn btn-info", @style="color: white" }) |
+                    @Html.ActionLink("Disociar un item de una promoción", "Delete", new { id = item.CodItem, id2 = item.CodPromo }, new { @class = "btn btn-danger" })
             </td>
         </tr>
 }

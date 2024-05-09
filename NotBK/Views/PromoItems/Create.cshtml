@@ -4,31 +4,31 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>PromoItem</h4>
+
+<h4>Agregar un item a una promoción</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CodItem" class="control-label"></label>
+                <label asp-for="CodItem" class="control-label">Item</label>
                 <select asp-for="CodItem" class ="form-control" asp-items="ViewBag.CodItem"></select>
             </div>
             <div class="form-group">
-                <label asp-for="CodPromo" class="control-label"></label>
+                <label asp-for="CodPromo" class="control-label">Promoción</label>
                 <select asp-for="CodPromo" class ="form-control" asp-items="ViewBag.CodPromo"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Confirmar registro" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a los items con promoción</a>
 </div>
 
 @section Scripts {
