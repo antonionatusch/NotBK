@@ -133,9 +133,9 @@ namespace NotBK.Controllers
 
 
         // GET: PromoItems/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id, string id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
@@ -143,30 +143,35 @@ namespace NotBK.Controllers
             var promoItem = await _context.PromoItems
                 .Include(p => p.CodItemNavigation)
                 .Include(p => p.CodPromoNavigation)
-                .FirstOrDefaultAsync(m => m.CodItem == id);
+                .FirstOrDefaultAsync(m => m.CodItem == id && m.CodPromo == id2);
             if (promoItem == null)
             {
                 return NotFound();
             }
 
+            ViewBag.Id = id;
+            ViewBag.Id2 = id2;
+
             return View(promoItem);
         }
 
-        // POST: PromoItems/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: PromoItems/DeleteConfirmed
+        [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(string id, string id2)
         {
-            var promoItem = await _context.PromoItems.FindAsync(id);
+            var promoItem = await _context.PromoItems.FindAsync(id, id2);
             if (promoItem != null)
             {
                 _context.PromoItems.Remove(promoItem);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                return NotFound();
+            }
         }
-
         private bool PromoItemExists(string id)
         {
             return _context.PromoItems.Any(e => e.CodItem == id);
