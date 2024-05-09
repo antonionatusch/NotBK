@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+
 
 <h3>¿Estás seguro que quieres eliminar a este cliente?</h3>
 <div>
@@ -27,7 +27,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="CodCliente" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> |
         <a asp-action="Index">Volver a la lista de clientes</a>
     </form>
 </div>
