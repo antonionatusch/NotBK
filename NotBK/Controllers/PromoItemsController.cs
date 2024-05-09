@@ -48,8 +48,8 @@ namespace NotBK.Controllers
         // GET: PromoItems/Create
         public IActionResult Create()
         {
-            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem");
-            ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "CodPromo");
+            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "Nombre");
+            ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "Nombre");
             return View();
         }
 
@@ -72,18 +72,19 @@ namespace NotBK.Controllers
         }
 
         // GET: PromoItems/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string id, string id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var promoItem = await _context.PromoItems.FindAsync(id);
+            var promoItem = await _context.PromoItems.FindAsync(id, id2);
             if (promoItem == null)
             {
                 return NotFound();
             }
+
             ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", promoItem.CodItem);
             ViewData["CodPromo"] = new SelectList(_context.Promocions, "CodPromo", "CodPromo", promoItem.CodPromo);
             return View(promoItem);
@@ -92,11 +93,13 @@ namespace NotBK.Controllers
         // POST: PromoItems/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: PromoItems/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodItem,CodPromo,FechaInicio,FechaFin")] PromoItem promoItem)
+        [ActionName("Edit")]
+        public async Task<IActionResult> EditPost(string id, string id2, [Bind("CodItem,CodPromo,FechaInicio,FechaFin")] PromoItem promoItem)
         {
-            if (id != promoItem.CodItem)
+            if (id != promoItem.CodItem || id2 != promoItem.CodPromo)
             {
                 return NotFound();
             }
@@ -110,7 +113,7 @@ namespace NotBK.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PromoItemExists(promoItem.CodItem))
+                    if (!PromoItemExists(promoItem.CodItem, promoItem.CodPromo))
                     {
                         return NotFound();
                     }
@@ -164,6 +167,11 @@ namespace NotBK.Controllers
         private bool PromoItemExists(string id)
         {
             return _context.PromoItems.Any(e => e.CodItem == id);
+        }
+
+        private bool PromoItemExists(string id, string id2)
+        {
+            return _context.PromoItems.Any(e => e.CodItem == id) && _context.PromoItems.Any(e => e.CodPromo == id2);
         }
     }
 }

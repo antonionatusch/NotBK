@@ -4,25 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="font-size: 22px" >Items en promoción</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar nuevo item</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
+                Fecha de inicio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaFin)
+                Último día disponible
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodItemNavigation)
+                Código del item
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodPromoNavigation)
+                Código de la promoción
             </th>
             <th></th>
         </tr>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.CodPromoNavigation.CodPromo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CodItem, id2 = item.CodPromo }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodItem, id2 = item.CodPromo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodItem, id2 = item.CodPromo })
             </td>
         </tr>
 }
