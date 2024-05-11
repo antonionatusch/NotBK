@@ -120,8 +120,7 @@ namespace NotBK.Controllers
                 }
                 return RedirectToAction(nameof(Index));
 
-                ViewBag.Id = id;
-                ViewBag.Id2 = id2;
+                
 
             }
             ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem", detallePedido.CodItem);
