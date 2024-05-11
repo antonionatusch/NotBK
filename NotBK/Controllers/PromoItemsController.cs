@@ -49,7 +49,7 @@ namespace NotBK.Controllers
         public IActionResult Create()
         {
             ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre");
-            ViewBag.CodPedido = new SelectList(_context.Pedidos, "CodPedido", "Nombre");
+            ViewBag.CodPromo = new SelectList(_context.Promocions, "CodPromo", "Nombre");
             return View();
         }
 

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Detalles de un pedido</h1>
 
 <p>
-    <a asp-action="Create">Crear </a>
+    <a asp-action="Create">Agregar nuevo detalle de pedido</a>
 </p>
 <table class="table">
     <thead>
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.Cantidad)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
+                Dirección de entrega
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodItemNavigation)
+                Item
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CodPedidoNavigation)
@@ -38,7 +38,7 @@
                     @Html.DisplayFor(modelItem => item.Direccion)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CodItemNavigation.CodItem)
+                    @Html.DisplayFor(modelItem => item.CodItemNavigation.Nombre)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CodPedidoNavigation.CodPedido)
