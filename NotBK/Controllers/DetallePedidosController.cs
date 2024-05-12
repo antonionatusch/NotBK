@@ -48,7 +48,7 @@ namespace NotBK.Controllers
         // GET: DetallePedidos/Create
         public IActionResult Create()
         {
-            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "CodItem");
+            ViewData["CodItem"] = new SelectList(_context.Items, "CodItem", "Nombre");
             ViewData["CodPedido"] = new SelectList(_context.Pedidos, "CodPedido", "CodPedido");
             return View();
         }

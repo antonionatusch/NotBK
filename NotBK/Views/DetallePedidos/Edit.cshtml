@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 style="font-size: 22px" >Modificando el detalle del pedido: @ViewBag.Id2</h1>
 
-<h4>DetallePedido</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,19 +22,19 @@
                 <span asp-validation-for="Cantidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Direccion" class="control-label"></label>
+                <label asp-for="Direccion" class="control-label">Dirección</label>
                 <input asp-for="Direccion" class="form-control" />
                 <span asp-validation-for="Direccion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar cambios" class="btn btn-outline-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista de pedidos</a>
 </div>
 
 @section Scripts {

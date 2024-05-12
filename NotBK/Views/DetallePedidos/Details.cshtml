@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Información del pedido</h1>
 
 <div>
-    <h4>DetallePedido</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,19 +17,19 @@
             @Html.DisplayFor(model => model.Cantidad)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Direccion)
+            Dirección de entrega
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Direccion)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodItemNavigation)
+            Item
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodItemNavigation.CodItem)
+            @Html.DisplayFor(model => model.CodItemNavigation.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodPedidoNavigation)
+            Código del pedido
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CodPedidoNavigation.CodPedido)
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Modificar duración del descuento", "Edit", new { id = Model.CodItem, id2 = Model.CodPedido }) |
+    <a asp-action="Index">Volver a la lista de detalles de pedidos</a>
 </div>

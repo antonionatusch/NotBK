@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Detalles de un pedido</h1>
+<h1 style="font-size: 22px" >Detalles de un pedido</h1>
 
 <p>
     <a asp-action="Create">Agregar nuevo detalle de pedido</a>
@@ -22,7 +22,7 @@
                 Item
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodPedidoNavigation)
+                Código del pedido
             </th>
             <th></th>
         </tr>
@@ -44,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.CodPedidoNavigation.CodPedido)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.CodItem, id2 = item.CodPedido }) |
-                    @Html.ActionLink("Detalles", "Details", new { id = item.CodItem, id2 = item.CodPedido }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CodItem, id2 = item.CodPedido })
+                    @Html.ActionLink("Modificar un detalle", "Edit", new { id = item.CodItem, id2 = item.CodPedido }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Más información", "Details", new { id = item.CodItem, id2 = item.CodPedido }, new { @class = "btn btn-info", @style = "color: white" }) |
+                    @Html.ActionLink("Eliminar un registro", "Delete", new { id = item.CodItem, id2 = item.CodPedido }, new { @class = "btn btn-danger"})
                 </td>
             </tr>
         }
