@@ -45,7 +45,7 @@ namespace NotBK.Controllers
             return View(promoItem);
         }
 
-        // GET: DetallePedidos/Create
+        // GET: PromoItems/Create
         public IActionResult Create()
         {
             ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre");
@@ -53,20 +53,20 @@ namespace NotBK.Controllers
             return View();
         }
 
-        // POST: DetallePedidos/Create
+        // POST: PromoItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodItem,CodPedido,Cantidad")] DetallePedido detallePedido)
+        public async Task<IActionResult> Create([Bind("CodItem,CodPromo,FechaInicio,FechaFin")] PromoItem promoItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(detallePedido);
+                _context.Add(promoItem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre", detallePedido.CodItem);
-            ViewBag.CodPedido = new SelectList(_context.Pedidos, "CodPedido", "Nombre", detallePedido.CodPedido);
-            return View(detallePedido);
+            ViewBag.CodItem = new SelectList(_context.Items, "CodItem", "Nombre", promoItem.CodItem);
+            ViewBag.CodPromo = new SelectList(_context.Promocions, "CodPromo", "Nombre", promoItem.CodPromo);
+            return View(promoItem);
         }
 
         // GET: PromoItems/Edit/5
